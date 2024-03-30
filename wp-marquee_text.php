@@ -8,7 +8,7 @@
 * Author URI: https://www.github.com/meddil
 **/
 
-function marquee_content() {
+function marquee_content($atts) {
     $content = '<marquee>Running text here</marquee>';
     return $content;
 }
