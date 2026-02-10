@@ -15,7 +15,7 @@ jobs:
 
       - name: Create plugin zip
         run: |
-          PLUGIN_NAME="wp-marquee-text"
+          PLUGIN_NAME="wp-marque_text"
           mkdir build
           zip -r build/$PLUGIN_NAME.zip $PLUGIN_NAME
 
