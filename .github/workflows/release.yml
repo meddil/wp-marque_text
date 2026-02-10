@@ -18,6 +18,9 @@ jobs:
           PLUGIN_NAME="wp-marque_text"
           mkdir build
           zip -r build/$PLUGIN_NAME.zip $PLUGIN_NAME
+            -x "$PLUGIN_NAME/.github/*" \
+            -x "*.git*" \
+            -x "*.DS_Store"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
