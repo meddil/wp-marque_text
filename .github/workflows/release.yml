@@ -9,22 +9,31 @@ jobs:
   release:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write   # 🔥 VERY IMPORTANT
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Create plugin zip
         run: |
-          PLUGIN_NAME="wp-marque_text"
-          mkdir build
-          zip -r build/$PLUGIN_NAME.zip $PLUGIN_NAME
-            -x "$PLUGIN_NAME/.github/*" \
+          PLUGIN_NAME="wp-marquee_text"
+          mkdir -p build
+          zip -r build/$PLUGIN_NAME.zip $PLUGIN_NAME \
             -x "*.git*" \
             -x "*.DS_Store"
+
+      - name: Debug info
+        run: |
+          echo "Tag: $GITHUB_REF_NAME"
+          ls -la build
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
           files: build/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
