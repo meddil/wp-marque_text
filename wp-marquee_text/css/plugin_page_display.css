@@ -8,17 +8,18 @@
     z-index: 9999;
 }
 
-/* pause animation on hover */
+
+/* Pause animation on hover */
 .marquee-container:hover .marquee-track {
     animation-play-state: paused;
 }
 
-/*
+
 .marquee-header {
     position: sticky;
     top: 0;
 }
-    */
+    
 
 .marquee-footer {
     position: fixed;
